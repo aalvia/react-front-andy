@@ -1,0 +1,25 @@
+[
+    {
+      "id": 1,
+      "nombre": "Spider-Man: No Way Home",
+      "foto": "https://radioatalaya.net/wp-content/uploads/2021/11/FEQBcH1XMAg8dwY.jpg",
+      "duracion": "148 min",
+      "resumen": "With Spider-Man's identity now revealed, Peter asks Doctor Strange for help. When a spell goes wrong, dangerous foes from other worlds start to appear, forcing Peter to discover what it truly means to be Spider-Man.",
+      "genero": "Action, Adventure, Sci-Fi",
+      "sinopsis": "Peter Parker's secret identity as Spider-Man is revealed to the world. Seeking help from Doctor Strange, Peter inadvertently opens the multiverse, bringing threats from alternate realities.",
+      "elenco": "Tom Holland, Zendaya, Benedict Cumberbatch",
+      "calificaciones": "8.7/10"
+    },
+    {
+      "id": 2,
+      "nombre": "Avengers: Endgame",
+      "foto": "https://terrigen-cdn-dev.marvel.com/content/prod/1x/avengersendgame_lob_crd_03.jpg",
+      "duracion": "181 min",
+      "resumen": "After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
+      "genero": "Action, Adventure, Drama",
+      "sinopsis": "The Avengers unite once more to undo the destruction caused by Thanos in a final showdown.",
+      "elenco": "Robert Downey Jr., Chris Evans, Mark Ruffalo",
+      "calificaciones": "8.4/10"
+    }
+  ]
+  
