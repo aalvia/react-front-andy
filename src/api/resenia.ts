@@ -1,5 +1,5 @@
 import { CreateResenia } from '../interaces/resenia.interface';
-const API = "http://localhost:3000/api"
+const API = "https://react-movies-1.onrender.com/api"
 
 
 export const createReseniaRequest = (resenia:CreateResenia) => 

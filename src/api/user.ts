@@ -1,5 +1,5 @@
 import { User } from '../interaces/user.insterface';
-const API = "http://localhost:3000/api"
+const API = "https://react-movies-1.onrender.com/api"
 
 
 export const createUserRequest = (user:User) => 
