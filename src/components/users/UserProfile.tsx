@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
+import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { updateUserRequest } from '../../api/user';
 import UserList from './UserList';  
 import swal from 'sweetalert';

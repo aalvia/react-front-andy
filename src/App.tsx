@@ -7,7 +7,7 @@ import Login from './components/users/Login';
 import MovieSearch from './components/MovieSearch';
 import MovieDetails from './components/MovieDetails';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import { useState,useEffect, ChangeEvent, FormEvent } from "react";
+import { useEffect } from "react";
 const App: React.FC = () => {
   return (
     <AuthProvider>

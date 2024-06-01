@@ -1,5 +1,4 @@
-import { useEffect,useState } from "react"
-import { getReseniaRequest } from "../api/resenia"
+
 import { Resenia } from "../interaces/resenia.interface"
 
 interface Props {

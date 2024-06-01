@@ -4,7 +4,7 @@ import { createReseniaRequest,getReseniaRequest ,updateReseniaRequest,deleteRese
 import ReseniaForm from './Resenia';
 import { Resenia } from '../interaces/resenia.interface'
 
-import { AuthProvider, useAuth } from '../context/AuthContext';
+import {  useAuth } from '../context/AuthContext';
 const MovieDetails: React.FC = () => {
 
 
@@ -168,7 +168,7 @@ const MovieDetails: React.FC = () => {
           <h3 className="text-2xl font-bold">Reseñas</h3>
           {reviews.length > 0 ? (
        
-            reviews.map((r, index) => (
+            reviews.map((r) => (
               <ReseniaForm resenia={r} key={r._id} onEdit={() => handleEditReview(r)}  onDelete={() => handleDeleteReview(r._id)} />
               
             ))
@@ -192,7 +192,7 @@ const MovieDetails: React.FC = () => {
 
 
 const AuthButton: React.FC<{ editMode: boolean, handleReviewSubmit: () => void }> = ({ editMode, handleReviewSubmit }) => {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
 
   return user ? (
     <button

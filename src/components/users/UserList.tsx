@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import ReseniaForm from '../Resenia';
 import { deleteReseniaRequest, getReseniaRequest, updateReseniaRequest } from '../../api/resenia';
 import { Resenia } from '../../interaces/resenia.interface';
@@ -59,7 +59,7 @@ function UserList() {
         <div className="mt-4 w-full">
             <h3 className="text-2xl font-bold">Reseñas</h3>
             {reviews.length > 0 ? (
-                reviews.map((r, index) => (
+                reviews.map((r) => (
                     <ReseniaForm
                         resenia={r}
                         key={r._id}
