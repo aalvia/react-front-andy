@@ -32,3 +32,11 @@ export const createReseniaRequest = (resenia:CreateResenia) =>
         method: 'DELETE',
     });
 };
+
+export const getReseniaByUserRequest  = (id: string) =>
+  fetch(`${API}/resenias/byuser/${id}`); 
+
+export const getReseniaByMovieRequest  = (id: string) =>
+  fetch(`${API}/resenias/bymovie/${id}`); 
+
+

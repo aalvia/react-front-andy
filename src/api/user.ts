@@ -43,3 +43,11 @@ export const createUserRequest = (user:User) =>
         'Content-Type': 'application/json'
       }
     });
+
+    export const deleteUserRequest = (id: string) =>
+        fetch(`${API}/users/${id}`, {
+            method: 'DELETE',
+        });
+   
+
+   

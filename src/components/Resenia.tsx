@@ -1,93 +1,50 @@
-
-import { Resenia } from "../interaces/resenia.interface"
+import { Resenia } from "../interaces/resenia.interface";
+import { useLocation } from 'react-router-dom';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 
 interface Props {
+    usuarioactual?: string;
     resenia: Resenia;
     onEdit: () => void;
-    onDelete: () => void; 
+    onDelete: () => void;
 }
-//function ReseniaForm({resenia}: Props)
-const ReseniaForm: React.FC<Props> = ({ resenia, onEdit,onDelete }) =>{
+
+const ReseniaForm: React.FC<Props> = ({ resenia, usuarioactual, onEdit, onDelete }) => {
+    const location = useLocation();
+    const isUserProfilePage = location.pathname === '/UserProfile';
     const handleDeleteReview = () => {
-        // Llama a la función de eliminación proporcionada desde MovieDetails
         onDelete();
     };
-  
-        return(
-            <div key={resenia._id} className="bg-gray-700 p-4 rounded-lg mt-2">
-                <div className="flex gap-x-2 float-right">
-                <button onClick={onEdit}>update</button>
-                <button onClick={handleDeleteReview}>delete</button>
-              </div>
-                <p><strong>Calificación:</strong> {resenia.estrellas}/10</p>
-                <p><strong>Reseña:</strong> {resenia.detalle}</p>
-               
-              </div>
-             
-        )
+
+    const isCurrentUser = isUserProfilePage || (usuarioactual && usuarioactual === resenia.iduser);
+
+    return (
+        <div key={resenia._id} className="bg-gray-800 p-4 rounded-lg shadow-md mt-2 text-black flex items-center justify-between">
+            <div>
+                <div className="text-lg font-semibold">{resenia.userDetails?.username}</div>
+                <p className="mt-2 text-sm text-gray-300"><strong>Calificación:</strong> {resenia.estrellas}/10</p>
+                <p className="mt-1 text-sm text-gray-300"><strong>Reseña:</strong> {resenia.detalle}</p>
+            </div>
+            {isCurrentUser && (
+                <div className="flex items-center">
+                    <button 
+                        onClick={onEdit} 
+                        className="text-blue-500 hover:text-blue-400 transition-colors"
+                        title="Edit"
+                    >
+                        <FaEdit />
+                    </button>
+                    <button 
+                        onClick={handleDeleteReview} 
+                        className="text-red-500 hover:text-red-400 transition-colors ml-2"
+                        title="Delete"
+                    >
+                        <FaTrash />
+                    </button>
+                </div>
+            )}
+        </div>
+    );
 }
-export default ReseniaForm
 
-/**/
-// import { useState, ChangeEvent, FormEvent } from "react";
-// import { createUserRequest } from '../api/user'
-// function Resenia() {
-//   const [user, setUser] = useState({
-//     id: "",
-//     idusuario: "",
-//     descripcion: "",
-//     estrellas: 0
-//   });
-
-//   const handleChange=(e:  ChangeEvent<HTMLInputElement>) => {
-//     setUser({...user,[e.target.name]:e.target.value});
-//   }
-
-//   const handleSubmit= async (e:FormEvent<HTMLFormElement>) => {
-//    e.preventDefault()
-//    console.log(user)
-//    const res = await createUserRequest(user);
-//    const data = await res.json();
-//    console.log(data);
-//   }
-
-//   return (
-//     <div className='bg-zinc-900 h-screen text-white flex items-center justify-center'>
-//     <div className='bg-gray-950 p-4 w-1/5 '>
-//       <h1 className='text-3xl font-bold text-center block my-2'>Usuario</h1>
-     
-//     <div>
-//       <form onSubmit={handleSubmit}>
-//         <input
-//           className="border-2 border-gray-700 p-2 rounded-lg
-//              bg-zinc-800 block w-full my-2"
-//           placeholder="ingresar usuario"
-//           type="text"
-//           name="username"
-//           onChange={handleChange}
-//         />
-//         <input
-//           className="border-2 border-gray-700 p-2 rounded-lg
-//              bg-zinc-800 block w-full my-2"
-//           placeholder="ingresar email"
-//           type="email"
-//           name="email"
-//           onChange={handleChange}
-//         />
-//         <input
-//           className="border-2 border-gray-700 p-2 rounded-lg
-//              bg-zinc-800 block w-full my-2"
-//           placeholder="ingresar password"
-//           type="text"
-//           name="password"
-//           onChange={handleChange}
-//         />
-//         <button className="bg-indigo-500 px-3 block py-2 w-full">save</button>
-//       </form>
-//     </div>
-//     </div>
-//     </div>
-//   );
-// }
-
-// export default Resenia;
+export default ReseniaForm;

@@ -3,6 +3,9 @@ export interface Resenia {
     iduser?: string,
     detalle?: string,
     estrellas?: string,
+    idmovie?: string,
+    namemovie?: string,
+    userDetails?: any,
     createdAt: Date;
     updatedAt: Date;
 }
