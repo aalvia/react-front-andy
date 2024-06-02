@@ -15,24 +15,7 @@ const MovieSearch: React.FC = () => {
     const data = await response.json();
     setMovie(data);
     setError(null);
-    // if (data.Response === 'False') {
-    //   setError(data.Error);
-    //   setMovie(null);
-    // } else {
-    //   setMovie(data);
-    //   setError(null);
-    // }
-
-      // const response = {
-      //   "Title": "Moana",
-      //   "Year": "2016",
-      //   "Plot": "In ancient Polynesia, when a terrible curse incurred by the demigod Maui reaches Moana's island, she answers the Ocean's call to seek out Maui to set things right.",
-      //   "Poster": "https://m.media-amazon.com/images/M/MV5BMjI4MzU5NTExNF5BMl5BanBnXkFtZTgwNzY1MTEwMDI@._V1_SX300.jpg",
-      //   "imdbID": "tt3521164"
-      // }; 
-
-      // setMovie(response);
-      // setError(null);
+   
     } catch (error) {
       setError("Ha ocurrido un error al buscar la película.");
       setMovie(null);
