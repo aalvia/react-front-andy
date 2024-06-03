@@ -34,6 +34,10 @@ const UserList: React.FC<UserListProps> = ({ userid }) => {
       setReviews(reviews.filter(r => r._id !== id));
     }
   };
+  const handleRatingChange = (rating: string) => {
+    setRating(rating);
+  };
+  
 
   const handleReviewSubmit = async () => {
     if (review && rating) {
@@ -94,8 +98,8 @@ const UserList: React.FC<UserListProps> = ({ userid }) => {
                   onChange={(e) => setReview(e.target.value)}
                 />
                
-                <StarRating rating={rating|| ''} onRatingChange={(e:any) => setRating(e.target.value)} />
-
+                <StarRating rating={rating|| ''} onRatingChange={handleRatingChange} />
+                
 
               </div>
               <div className="bg-gray-100 px-6 py-3 sm:flex sm:flex-row-reverse">

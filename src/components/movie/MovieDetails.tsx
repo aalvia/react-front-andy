@@ -6,6 +6,8 @@ import { Resenia } from '../../interaces/resenia.interface'
 import StarRating from '../StarRating';
 import {  useAuth } from '../../context/AuthContext';
 import {  FiCheck, FiX, FiLogIn } from 'react-icons/fi';
+
+import swal from 'sweetalert';
 const MovieDetails: React.FC = ({  }) => {
 
 
@@ -101,6 +103,10 @@ const handleRatingChange = (rating: string) => {
       setRating(null);
       setEditMode(false);
       setEditReviewId(null);
+    }
+    else{
+      swal("Error", "No puede registrar reseña sin llenar todos los campos", "error");
+      return;
     }
 
    
