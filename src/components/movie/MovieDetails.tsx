@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { createReseniaRequest,getReseniaRequest ,updateReseniaRequest,deleteReseniaRequest,getReseniaByMovieRequest} from '../../api/resenia' 
+import { createReseniaRequest ,updateReseniaRequest,deleteReseniaRequest,getReseniaByMovieRequest} from '../../api/resenia' 
 import ReseniaForm from '../Resenia';
 import { Resenia } from '../../interaces/resenia.interface'
 import StarRating from '../StarRating';
 import {  useAuth } from '../../context/AuthContext';
-const MovieDetails: React.FC<{ imdbID: string }> = ({ imdbID }) => {
+const MovieDetails: React.FC<{ imdbID: string }> = ({  }) => {
 
 
   const { id } = useParams<{ id: string }>();
@@ -34,7 +34,6 @@ const MovieDetails: React.FC<{ imdbID: string }> = ({ imdbID }) => {
   
   useEffect(() => {
     const fetchMovieDetails = async () => {
-      console.log("imdbID",id)
       const response = await fetch(`http://www.omdbapi.com/?apikey=bdb6d651&i=${id}`);
       const data = await response.json();
       setMovie(data);
@@ -170,13 +169,6 @@ const handleRatingChange = (rating: string) => {
 
   );
 };
-
-
-
-
-
-
-
 
 
 
