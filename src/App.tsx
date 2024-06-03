@@ -13,7 +13,7 @@ const App: React.FC = () => {
   return (
     <AuthProvider>
       <Router>
-        <div className='bg-zinc-900 h-screen'>
+        <div className='bg-zinc-950 h-screen'>
           <div className='bg-gray-950 p-4 w-full flex justify-between items-center'>
             <Link to="/" className="flex items-center text-white">
               <FaFilm className='text-2xl mr-2' />
@@ -21,7 +21,7 @@ const App: React.FC = () => {
             </Link>
             <AuthButton />
           </div>
-          <div className='bg-zinc-900 text-white flex items-center justify-center'>
+          <div className='bg-zinc-950 text-white flex items-center justify-center'>
             <div className='bg-gray-950 w-4/5 p-4 rounded-lg shadow-lg'>
               <Routes>
                 <Route path="/" element={<MovieSearch />} />

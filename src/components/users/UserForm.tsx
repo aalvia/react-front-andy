@@ -44,7 +44,7 @@ function UserForm() {
   };
 
   return (
-    <div className='bg-zinc-900  text-white flex items-center justify-center'>
+    <div className='bg-zinc-950  text-white flex items-center justify-center'>
       <div className='bg-gray-950 p-8 rounded-lg shadow-lg w-96'>
         <h1 className='text-3xl font-bold text-center mb-6'>Registrar Usuario</h1>
         <form onSubmit={handleSubmit}>

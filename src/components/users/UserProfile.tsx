@@ -66,7 +66,7 @@ function UserProfile() {
   };
 
   return (
-    <div className="bg-zinc-900 text-white min-h-screen flex flex-col items-center justify-center">
+    <div className="bg-zinc-950 text-white min-h-screen flex flex-col items-center justify-center">
       <h1 className="text-3xl font-bold mb-6">Perfil del usuario</h1>
       <div className="bg-gray-950 p-8 rounded-lg shadow-lg w-96">
         <form onSubmit={handleSubmit}>
