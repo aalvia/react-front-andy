@@ -34,7 +34,7 @@ const MovieDetails: React.FC = ({  }) => {
   
   useEffect(() => {
     const fetchMovieDetails = async () => {
-      const response = await fetch(`http://www.omdbapi.com/?apikey=bdb6d651&i=${id}`);
+      const response = await fetch(`https://www.omdbapi.com/?apikey=bdb6d651&i=${id}`);
       const data = await response.json();
       setMovie(data);
     
