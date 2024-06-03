@@ -5,7 +5,7 @@ import ReseniaForm from '../Resenia';
 import { Resenia } from '../../interaces/resenia.interface'
 import StarRating from '../StarRating';
 import {  useAuth } from '../../context/AuthContext';
-const MovieDetails: React.FC<{ imdbID: string }> = ({  }) => {
+const MovieDetails: React.FC = ({  }) => {
 
 
   const { id } = useParams<{ id: string }>();
