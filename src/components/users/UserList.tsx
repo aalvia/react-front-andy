@@ -3,6 +3,7 @@ import ReseniaForm from '../Resenia';
 import { deleteReseniaRequest, getReseniaByUserRequest, updateReseniaRequest } from '../../api/resenia';
 import { Resenia } from '../../interaces/resenia.interface';
 
+import StarRating from '../StarRating';
 interface UserListProps {
   userid: string;
 }
@@ -65,6 +66,7 @@ const UserList: React.FC<UserListProps> = ({ userid }) => {
       {reviews.length > 0 ? (
         reviews.map((r) => (
           <div key={r._id} className="bg-gray-800 p-4 rounded-lg mb-4 shadow-md">
+            {r.namemovie}
             <ReseniaForm
               resenia={r}
               onEdit={() => handleEditReview(r)}
@@ -91,15 +93,10 @@ const UserList: React.FC<UserListProps> = ({ userid }) => {
                   value={review}
                   onChange={(e) => setReview(e.target.value)}
                 />
-                <input
-                  type="number"
-                  className="w-full p-3 border border-gray-300 text-gray-900 rounded-lg mb-4"
-                  value={rating || ''}
-                  onChange={(e) => setRating(e.target.value)}
-                  placeholder="Calificación (1-10)"
-                  min="1"
-                  max="10"
-                />
+               
+                <StarRating rating={rating|| ''} onRatingChange={(e:any) => setRating(e.target.value)} />
+
+
               </div>
               <div className="bg-gray-100 px-6 py-3 sm:flex sm:flex-row-reverse">
                 <button

@@ -11,6 +11,8 @@ function Login() {
     password: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -20,10 +22,12 @@ function Login() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true); // Inicia la animación de carga
     console.log(user);
     const res = await loginUserReques(user);
     const data = await res.json();
     console.log(data);
+    setLoading(false); // Finaliza la animación de carga
     if (res.ok) {
       swal("Usuario Logeado", "¡Bienvenido!", "success");
       login(data._id); // Muestra el mensaje de éxito
@@ -48,6 +52,7 @@ function Login() {
               type="text"
               name="username"
               onChange={handleChange}
+              disabled={loading} // Deshabilita el campo durante la carga
             />
           </div>
           <div className='flex items-center border-2 border-gray-700 rounded-lg mb-6 bg-zinc-800'>
@@ -58,10 +63,14 @@ function Login() {
               type="password"
               name="password"
               onChange={handleChange}
+              disabled={loading} // Deshabilita el campo durante la carga
             />
           </div>
-          <button className='bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg w-full'>
-            Login
+          <button
+            className='bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg w-full'
+            disabled={loading} // Deshabilita el botón durante la carga
+          >
+            {loading ? 'Cargando...' : 'Login'} {/* Cambia el texto del botón durante la carga */}
           </button>
         </form>
       </div>

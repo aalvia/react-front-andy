@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { createReseniaRequest,getReseniaRequest ,updateReseniaRequest,deleteReseniaRequest,getReseniaByMovieRequest} from '../../api/resenia' 
 import ReseniaForm from '../Resenia';
 import { Resenia } from '../../interaces/resenia.interface'
-
+import StarRating from '../StarRating';
 import {  useAuth } from '../../context/AuthContext';
 const MovieDetails: React.FC<{ imdbID: string }> = ({ imdbID }) => {
 
@@ -75,9 +75,10 @@ const MovieDetails: React.FC<{ imdbID: string }> = ({ imdbID }) => {
     setReview(e.target.value);
   };
 
-  const handleRatingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRating(e.target.value);
-  };
+const handleRatingChange = (rating: string) => {
+  setRating(rating);
+};
+
 
   const handleReviewSubmit = async () => {
     if (review && rating) {
@@ -149,15 +150,8 @@ const MovieDetails: React.FC<{ imdbID: string }> = ({ imdbID }) => {
           onChange={handleReviewChange}
           placeholder="Escribe tu reseña aquí..."
         />
-        <input
-          type="number"
-          className="w-full p-2 mt-2 text-black border border-gray-300 rounded"
-          value={rating || ''}
-          onChange={handleRatingChange}
-          placeholder="Calificación (1-10)"
-          min="1"
-          max="10"
-        />
+     
+        <StarRating rating={rating|| ''} onRatingChange={handleRatingChange} />
         <AuthButton editMode={editMode} handleReviewSubmit={handleReviewSubmit} />
       </div>
     </div>
