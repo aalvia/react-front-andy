@@ -5,6 +5,7 @@ import ReseniaForm from '../Resenia';
 import { Resenia } from '../../interaces/resenia.interface'
 import StarRating from '../StarRating';
 import {  useAuth } from '../../context/AuthContext';
+import {  FiCheck, FiX, FiLogIn } from 'react-icons/fi';
 const MovieDetails: React.FC = ({  }) => {
 
 
@@ -151,7 +152,11 @@ const handleRatingChange = (rating: string) => {
         />
      
         <StarRating rating={rating|| ''} onRatingChange={handleRatingChange} />
-        <AuthButton editMode={editMode} handleReviewSubmit={handleReviewSubmit} />
+        <AuthButton editMode={editMode} handleReviewSubmit={handleReviewSubmit} handleCancel={() => {
+  setReview('');
+  setRating(null);
+  setEditMode(false);
+}} />
       </div>
     </div>
   </div>
@@ -173,20 +178,34 @@ const handleRatingChange = (rating: string) => {
 
 
 
-const AuthButton: React.FC<{ editMode: boolean, handleReviewSubmit: () => void }> = ({ editMode, handleReviewSubmit }) => {
+const AuthButton: React.FC<{ editMode: boolean, handleReviewSubmit: () => void, handleCancel: () => void }> = ({ editMode, handleReviewSubmit, handleCancel }) => {
   const { user } = useAuth();
 
   return user ? (
-    <button
-      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2"
-      onClick={handleReviewSubmit}
-    >
-      {editMode ? 'Actualizar' : 'Enviar'}
-    </button>
+    <div className="flex items-center space-x-2">
+       {editMode ? (
+        <button
+          className="flex items-center justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2"
+          onClick={() => {
+            handleCancel(); // Llama a la función handleCancel pasada como prop
+          }}
+        >
+          <FiX className="mr-1" /> Cancelar
+        </button>
+      ) : (
+        <div></div> // No muestra nada si no está en modo de edición
+      )}
+      <button
+        className="flex items-center justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2"
+        onClick={handleReviewSubmit}
+      >
+        <FiCheck className="mr-1" /> {editMode ? 'Actualizar' : 'Enviar'}
+      </button>
+    </div>
   ) : (
-    <Link to="/login">
-      <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
-        Login
+    <Link to="/login" className="flex items-center space-x-2 whitespace-nowrap">
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">
+        <FiLogIn className="mr-1" /> Iniciar sesión
       </button>
     </Link>
   );
